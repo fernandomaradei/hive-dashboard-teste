@@ -2314,6 +2314,39 @@ section{scroll-margin-top:84px}
 @media(max-width:720px){.nav{border-radius:13px!important}.hero{border-radius:15px!important}.kpis{gap:9px!important}.main{gap:12px!important}:is(.panel,.classRankPanel,.mgr-section,.myCharShell){border-radius:15px!important}#hiveV2TestBadge{right:10px;bottom:10px;font-size:9px;padding:6px 10px}}
 
 </style>
+<style id="hive-v2-layout">
+/* HIVE V2 - estrutura nova e independente */
+body{background:radial-gradient(ellipse at 50% 0%,#2a2112 0%,#0b0e0d 42%,#070908 100%)!important}
+.app{max-width:1540px!important;width:calc(100% - 40px)!important;margin:auto!important}
+.v2top{height:72px;display:flex;align-items:center;gap:24px;position:relative;z-index:5}
+.v2brand{display:flex;align-items:center;gap:12px;min-width:210px;color:#ffd56b;font-weight:1000;font-size:29px;letter-spacing:1px;text-decoration:none}
+.v2brand small{display:block;font-size:9px;color:#f5e5bc;letter-spacing:2px;line-height:1}
+.v2brand .v2bee{font-size:33px}
+.nav{order:0!important;flex:1;display:flex!important;align-items:center!important;gap:6px!important;border:0!important;background:transparent!important;padding:0!important;box-shadow:none!important;overflow-x:auto!important;white-space:nowrap}
+.nav a{font-size:12px!important;border-radius:10px!important;padding:12px 11px!important}
+.nav .search{margin-left:auto!important;min-width:175px}
+.hero{height:164px!important;min-height:164px!important;margin:8px 0 14px!important;border:1px solid #98731b!important;border-radius:19px!important;background-position:center!important;background-size:cover!important}
+.kpis{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:12px!important;margin:0 0 15px!important}
+.kpi{min-width:0!important;min-height:93px!important;padding:16px 12px!important;border:1px solid #6b531d!important;border-radius:14px!important;background:linear-gradient(140deg,#171a18,#0b0f0e)!important}
+.kico{font-size:26px!important}.kvalue{font-size:24px!important}.klabel{font-size:10px!important}
+.v2stage{display:grid;grid-template-columns:minmax(0,2.55fr) minmax(290px,1fr);gap:14px;align-items:start;margin-bottom:14px}
+.myCharShell{margin:0!important;min-width:0!important;border:1px solid #9a7623!important;border-radius:16px!important;overflow:hidden}
+.myCharCard{background:linear-gradient(150deg,#0b1413,#07100f)!important}
+.myCharHeroRow{gap:12px!important}.myCharIdentityCard{min-width:0!important}
+.v2side{display:grid;gap:13px}
+.v2panel{background:linear-gradient(135deg,#191b17,#0c100f);border:1px solid #80621c;border-radius:15px;padding:17px;color:#f7f2e7;min-width:0}
+.v2panel h3{font-size:16px;color:#ffdc79;margin:0 0 14px;letter-spacing:.02em}
+.v2warrow{display:flex;gap:10px}.v2warbox{flex:1;min-width:0;border:1px solid #59471f;border-radius:10px;text-align:center;padding:13px 5px;background:#171812}.v2warbox b{display:block;color:#ffd15a;font-size:22px}.v2warbox small{font-size:11px;color:#aaa}
+.v2hint{font-size:12px;color:#b9b4a6;margin-top:12px}
+.v2rankitem{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid #ffffff12;font-size:13px}.v2rankitem:last-child{border:0}.v2rankitem .v2num{color:#f2c958;min-width:23px}.v2rankitem .v2name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.v2rankitem b{color:#f4d07d}
+.v2bottom{display:grid;grid-template-columns:1fr 1.55fr 1fr;gap:14px;margin-bottom:16px}
+.v2bottom .v2panel{min-height:145px}.v2big{font-size:28px;color:#f8ce59;font-weight:900}.v2bar{height:14px;border-radius:99px;overflow:hidden;display:flex;background:#28302c;margin:12px 0}.v2bar span{height:100%}
+.v2empty{font-size:12px;color:#b7b5a9;line-height:1.5}
+.main{margin-top:16px!important}
+#hiveV2TestBadge{bottom:9px!important}
+@media(max-width:1100px){.v2top{height:auto;flex-wrap:wrap;padding:12px 0}.v2brand{min-width:100%}.kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}.v2stage{grid-template-columns:1fr}.v2side{grid-template-columns:1fr 1fr}.v2bottom{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.app{width:calc(100% - 20px)!important}.v2brand{font-size:24px}.nav{width:100%;flex:none}.hero{height:110px!important;min-height:110px!important}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}.v2side,.v2bottom{grid-template-columns:1fr}.v2panel{padding:13px}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -6306,5 +6339,34 @@ window.hivePremiumClassImage = function(job){
 </script>
 
 <div id="hiveV2TestBadge" aria-label="Versão de teste">HIVE V2 • TESTE</div>
+<script id="hive-v2-structure">
+(function(){
+  const app=document.querySelector('.app'), nav=document.querySelector('.nav'), hero=document.querySelector('.hero'), kpis=document.querySelector('#kpis'), my=document.querySelector('#myCharShell');
+  if(!app||!nav||!hero||!kpis||!my)return;
+  const top=document.createElement('header');top.className='v2top';top.innerHTML='<a href="#inicio" class="v2brand"><span class="v2bee">🐝</span><span>HIVE<small>RAGNAROK ORIGIN CLASSIC</small></span></a>';
+  app.insertBefore(top,hero);top.appendChild(nav);app.insertBefore(kpis,hero.nextSibling);
+  const stage=document.createElement('div');stage.className='v2stage';app.insertBefore(stage,my);stage.appendChild(my);
+  const side=document.createElement('aside');side.className='v2side';stage.appendChild(side);
+  side.innerHTML='<section class="v2panel"><h3>⚔️ PRÓXIMA GUERRA</h3><div id="v2WarWhen" class="v2hint">Terça, quinta e domingo</div><div class="v2warrow"><div class="v2warbox"><b>20:25</b><small>Organização</small></div><div class="v2warbox"><b>20:55</b><small>Início</small></div></div><div class="v2hint">🎮 Discord obrigatório • Vamos com tudo!</div></section><section class="v2panel"><h3>👥 SUA CLASSE NA GUILD</h3><div id="v2ClassPeers" class="v2empty">Carregando membros da classe...</div></section>';
+  const bottom=document.createElement('section');bottom.className='v2bottom';stage.after(bottom);
+  bottom.innerHTML='<article class="v2panel"><h3>👑 DESTAQUE DA GUILD</h3><div id="v2Featured" class="v2empty">Aguardando dados...</div></article><article class="v2panel"><h3>👥 DISTRIBUIÇÃO DE CLASSES</h3><div id="v2Distribution" class="v2empty">Aguardando dados...</div></article><article class="v2panel"><h3>🕒 ATUALIZAÇÕES RECENTES</h3><div id="v2Recent" class="v2empty">Aguardando dados...</div></article>';
+  const escV2=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function update(){
+    if(typeof members==='undefined'||!Array.isArray(members)||!members.length)return;
+    const power=m=>typeof intNum==='function'?intNum(m['Power Atual'],'Power Atual'):Number(m['Power Atual'])||0;
+    const sorted=[...members].sort((a,b)=>power(b)-power(a));const best=sorted[0];
+    document.querySelector('#v2Featured').innerHTML='<div class="v2rankitem"><span style="font-size:25px">👑</span><span class="v2name"><b>'+escV2(best.Personagem)+'</b><br><small>'+escV2(best.Job)+'</small></span><b class="v2big">'+escV2(typeof fmtInt==='function'?fmtInt(best['Power Atual'],'Power Atual'):power(best))+'</b></div>';
+    const count={};members.forEach(m=>{if(m.Job)count[m.Job]=(count[m.Job]||0)+1});const groups=Object.entries(count).sort((a,b)=>b[1]-a[1]);const colors=['#5188f9','#ed6b9b','#f3c54f','#42d5ad','#30a9e5','#9363ed'];const sum=groups.reduce((n,x)=>n+x[1],0)||1;
+    document.querySelector('#v2Distribution').innerHTML='<div class="v2bar">'+groups.map((x,i)=>'<span title="'+escV2(x[0])+'" style="width:'+(x[1]/sum*100)+'%;background:'+colors[i%colors.length]+'"></span>').join('')+'</div><div class="v2hint">'+groups.slice(0,6).map((x,i)=>'<span style="display:inline-block;margin:5px 12px 0 0"><span style="color:'+colors[i%colors.length]+'">●</span> '+escV2(x[0])+' '+x[1]+'</span>').join('')+'</div>';
+    const name=document.querySelector('#myCharName')?.textContent?.trim();const me=members.find(m=>m.Personagem===name);const peers=me?members.filter(m=>m.Job===me.Job).sort((a,b)=>power(b)-power(a)):[];
+    document.querySelector('#v2ClassPeers').innerHTML=peers.length?peers.slice(0,5).map((m,i)=>'<div class="v2rankitem"><span class="v2num">'+(i+1)+'</span><span class="v2name">'+escV2(m.Personagem)+'</span><b>'+escV2(typeof fmtInt==='function'?fmtInt(m['Power Atual'],'Power Atual'):power(m))+'</b></div>').join(''):'<div class="v2empty">Sua classe será exibida quando o personagem for identificado.</div>';
+    const updated=members.filter(m=>m['Última Atualização']).slice(0,3);document.querySelector('#v2Recent').innerHTML=updated.length?updated.map(m=>'<div class="v2rankitem"><span class="v2name">'+escV2(m.Personagem)+'</span><small>'+escV2(m['Última Atualização'])+'</small></div>').join(''):'<div class="v2empty">Sem registros de atualização disponíveis na resposta atual.</div>';
+  }
+  const oldRender=window.render;
+  // O render original continua controlando rankings, ficha, filtros e integração.
+  if(typeof oldRender==='function')window.render=function(){const result=oldRender.apply(this,arguments);update();return result};
+  document.addEventListener('DOMContentLoaded',update);setTimeout(update,1200);
+})();
+</script>
 </body></html
 >
