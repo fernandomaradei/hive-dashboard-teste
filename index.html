@@ -6565,8 +6565,8 @@ function renderHiveHistory(member){
  const days=new Map();for(const point of all){if(point.date>=cutoff)days.set(`${point.date.getFullYear()}-${point.date.getMonth()}-${point.date.getDate()}`,point)}
  const points=[...days.values()].sort((a,b)=>a.date-b.date);
  if(!points.length){target.innerHTML='<div class="hive-history-empty">Nenhum registro de Power no HISTORICO nos últimos '+hiveHistoryDays+' dias.</div>';return}
- const last=points.at(-1),first=points[0],delta=last.power-first.power;
- const summary=`<div class="hive-history-summary"><span>Histórico real • ${points.length} dia${points.length===1?'':'s'} com registros</span><strong class="${delta>=0?'positive':'negative'}">${delta>=0?'+':''}${fmtv(delta)} Power</strong></div>`;
+ const last=points.at(-1),first=points[0],previous=points.length>1?points.at(-2):null,delta=previous?last.power-previous.power:0;
+ const summary=`<div class="hive-history-summary"><span>Histórico real • ${points.length} dia${points.length===1?'':'s'} com registros • evolução desde a atualização anterior</span><strong class="${delta>=0?'positive':'negative'}">${delta>=0?'+':''}${fmtv(delta)} Power</strong></div>`;
  if(points.length===1){target.innerHTML=summary+`<div class="hive-history-empty">${esc(first.date.toLocaleDateString('pt-BR'))}: ${fmtv(first.power)} Power. Ainda não há dois dias com registros neste período.</div>`;return}
  const W=Math.max(620,52+12+(points.length-1)*53),H=178,L=52,R=12,T=18,B=30;
  const values=points.map(p=>p.power),min=Math.min(...values),max=Math.max(...values),pad=Math.max(1500,(max-min)*.15),lo=Math.max(0,min-pad),hi=max+pad;
